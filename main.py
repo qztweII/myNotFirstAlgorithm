@@ -3,18 +3,24 @@ import json
 with open("menu.json") as menu: #Loading menu from a json file
     rawMenu = json.load(menu)
 
+    cookedMenu = {} #make the function's menu
+    for i in rawMenu["menu"]:
+        cookedMenu[i["item"]] = i["price"]
+
 def studentOrder(): #Takes the order
     order = []
     doneOrdering = False
-    global rawMenu
+    global itemsList
     
-    cookedMenu = []
+    itemsList = []
     for i in rawMenu["menu"]:
-        cookedMenu.append(i["item"])
+        itemsList.append(i["item"])
 
     while not doneOrdering: #Taking Order, each item is assigned a numerical id
-        for i in range(len(cookedMenu)): #Interface
-            print(f"[{i}] {cookedMenu[i]}")
+        for i in range(len(itemsList)): #Interface
+            print(f"[{i}] {itemsList[i]}", end='') #Display price nicely
+            for i in range(30 - len(itemsList[i])):
+                print(".", end='')
         print("[E] Finish Ordering")
 
         try: #Taking order, make sure input is a number corresponding to a numerical id
@@ -25,20 +31,17 @@ def studentOrder(): #Takes the order
                     print("You cannot have a none order!")
             else:
                 itemToOrder = int(itemToOrder)
-                cookedMenu[itemToOrder] #Check if itemToOrder is out of range
+                itemsList[itemToOrder] #Check if itemToOrder is out of range
         except:
             print("Invalid input. Please enter a number to select your item")
         else:
             if itemToOrder != "E":
-                order.append(cookedMenu[itemToOrder])
+                order.append(itemsList[itemToOrder])
     return order #Returns a list
 
 def calculateTotal(order): #Calculates the total price of order
-    global rawMenu
+    global cookedMenu
     price = 0
-    pricedMenu = {} #make the function's menu
-    for i in rawMenu["menu"]:
-        pricedMenu[i["item"]] = i["price"]
     
     for item in order: #For now, literally everything is five
         price += pricedMenu[item]
@@ -56,6 +59,7 @@ def applyDiscount(price): #Applies a discount above certain prices
         discount = 0
     
     return [round(price, 2), discount]
+
 def priceCheck(price): #Safeguard for if somehow, just somehow the price is below zero
     if price <= 0: #Exit if the price is somehow below zero
             print("Oh no! Why is the price zero??")
