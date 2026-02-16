@@ -1,0 +1,6 @@
+Terence
+Margherita Pizza
+Cheeseburger
+Caesar Salad
+9.450000000000001
+Discount applied: 10%

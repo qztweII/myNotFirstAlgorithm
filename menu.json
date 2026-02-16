@@ -1,0 +1,14 @@
+{
+  "menu": [
+    { "item": "Margherita Pizza", "price": 2.50 },
+    { "item": "Cheeseburger", "price": 3.00 },
+    { "item": "Caesar Salad", "price": 5.00 },
+    { "item": "Grilled Chicken Sandwich", "price": 4.50 },
+    { "item": "Spaghetti Bolognese", "price": 4.50 },
+    { "item": "Fish and Chips", "price": 5.00 },
+    { "item": "Veggie Wrap", "price": 3.50 },
+    { "item": "Beef Tacos (3 pcs)", "price": 8.00 },
+    { "item": "Chicken Fried Rice", "price": 4.00 },
+    { "item": "Chocolate Brownie", "price": 1.00 }
+  ]
+}
