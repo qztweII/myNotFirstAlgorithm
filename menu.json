@@ -1,6 +1,6 @@
 {
   "menu": [
-    { "item": "Margherita Pizza", "price": 2.50 },
+    { "item": "Margherita Pizza Slice", "price": 2.50 },
     { "item": "Cheeseburger", "price": 3.00 },
     { "item": "Caesar Salad", "price": 5.00 },
     { "item": "Grilled Chicken Sandwich", "price": 4.50 },

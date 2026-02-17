@@ -10,7 +10,7 @@ with open("menu.json") as menu: #Loading menu from a json file
 def studentOrder(): #Takes the order
     order = []
     doneOrdering = False
-    global itemsList
+    global cookedMenu
     
     itemsList = []
     for i in rawMenu["menu"]:
@@ -19,16 +19,19 @@ def studentOrder(): #Takes the order
     while not doneOrdering: #Taking Order, each item is assigned a numerical id
         for i in range(len(itemsList)): #Interface
             print(f"[{i}] {itemsList[i]}", end='') #Display price nicely
-            for i in range(30 - len(itemsList[i])):
+            for j in range(30 - len(itemsList[i])):
                 print(".", end='')
+            print("$", end='')
+            print(cookedMenu[itemsList[i]])
         print("[E] Finish Ordering")
 
         try: #Taking order, make sure input is a number corresponding to a numerical id
-            itemToOrder = input("Please use number to select a food: ")
-            if itemToOrder.upper() == "E":
+            itemToOrder = input("Please use number to select a food: ").upper()
+            if itemToOrder == "E":
                 doneOrdering = True
                 if len(order) == 0: #Nothing ordered safeguard
                     print("You cannot have a none order!")
+                    exit()
             else:
                 itemToOrder = int(itemToOrder)
                 itemsList[itemToOrder] #Check if itemToOrder is out of range
@@ -44,7 +47,7 @@ def calculateTotal(order): #Calculates the total price of order
     price = 0
     
     for item in order: #For now, literally everything is five
-        price += pricedMenu[item]
+        price += cookedMenu[item]
     
     return round(price, 2) #Returns a float
 
